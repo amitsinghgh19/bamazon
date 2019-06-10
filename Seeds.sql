@@ -2,13 +2,13 @@ SELECT * FROM products;
 
 -- Add data to the table
 INSERT into products (product_name, department_name, price, stock_quantity)
-VALUES ("Shampoo", "PERSONAL CARE", 6.99, 10),
-("Conditioner", "PERSONAL CARE", 5.99, 9),
-("Laptop", "ELECTRONICS", 599.58, 5),
-("Cellphone", "ELECTRONICS", 350.00, 15),
-("T-shirt", "CLOTHING", 11.00, 50),
-("Pants", "CLOTHING", 21.00, 35),
-("Face Cream", "COSTMETICS", 12.60, 35),
-("Hand Cream", "COSTMETICS", 8.60, 40),
-("Jigsaw", "TOYS", 10.80, 40),
-("Monopoly", "TOYS", 8.00, 50);
+VALUES ("Samsung LED UHD TV", "Electronics", 1099.99, 10),
+("Laptop Dell", "Electronics", 599.58, 10),
+("Laptop Apple", "Electronics", 999.58, 20),
+("Cellphone", "Electronics", 350.00, 25),
+("Hanes white t-shirts five-pack", "Clothing", 14.99, 30),
+("Aveeno Body Lotion", "Health & Beauty", 12.60, 35),
+("AXE DEO For Men", "Health & Beauty", 4.99, 40),
+("DOVE DEO For Women", "Health & Beauty", 5.60, 40),
+("Puppy-Licious Dog Biscuits", "Pet Supplies", 7.99, 100),
+("Coding for Dummies", "Books", 20.99, 100);
