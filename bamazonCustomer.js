@@ -3,6 +3,9 @@ var mysql = require("mysql"); //MySQL
 var inquirer = require("inquirer"); //Inquirer
 var Table = require('cli-table'); //For Table formatting
 var chalk = require('chalk'); //For font color and properties
+var figlet = require('figlet');
+
+
 
 //Create the connection for the sql database
 var connection = mysql.createConnection({
@@ -21,9 +24,21 @@ var connection = mysql.createConnection({
   });
 
 //Function that presents welcome statement the first time 
-function welcome(){
-    console.log(chalk.yellow.bold("\n===========** WELCOME TO BAMAZON **==========="));
-    showProducts();
+function welcome(message){
+    
+    figlet('BAMAZON', function(err, data) {
+		if (err) {
+			console.log('Oops! Something went wrong...');
+			console.dir(err);
+			return;
+		}
+		console.log(chalk.red.bold(data));
+		console.log(chalk.red.bold('***********************************************'));
+		console.log(chalk.red.bold('\t*  SHOP BEST ONLINE DEAL  *'));
+		console.log(chalk.red.bold('***********************************************'));
+        console.log(chalk.blue.bold("\n===========** WELCOME TO BAMAZON **==========="));
+        showProducts();
+    });
 }
 
 
@@ -35,7 +50,7 @@ function showProducts(){
         var table = new Table({
             head: ['ITEM ID', 'PRODUCT NAME', 'PRICE'],
             style: {
-                head: ['yellow'],
+                head: ['blue'],
                 compact: true,
                 colAligns: ['center'],
                 "padding-left": 2,
@@ -86,8 +101,8 @@ function buyProducts(){
         var query = "SELECT item_id,product_name, stock_quantity, price FROM products WHERE item_id = ?";
         connection.query(query, [answer.chosenItem], function(err, res){
             for (var i = 0; i <res.length; i++) {
-                console.log(chalk.yellow("\nYour product choice is: ") + chalk.white.bold(res[i].product_name) + " " + chalk.yellow("for a quantity of") + " " + chalk.white.bold(answer.chosenQty));
-                console.log(chalk.yellow("\nWe currently have a quantity of ") + chalk.white.bold(res[i].stock_quantity) + " " + chalk.yellow("for this product"));
+                console.log(chalk.blue("\nYour product choice is: ") + chalk.white.bold(res[i].product_name) + " " + chalk.blue("for a quantity of") + " " + chalk.white.bold(answer.chosenQty));
+                console.log(chalk.blue("\nWe currently have a quantity of ") + chalk.white.bold(res[i].stock_quantity) + " " + chalk.blue("for this product"));
                 if(res[i].stock_quantity <answer.chosenQty){
                     console.log (chalk.bgRed("\nSorry there is not enough quantity of this product in stock.\n"));
                     nextOption();
