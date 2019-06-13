@@ -64,7 +64,7 @@ var startMrgApp = function() {
                 if (answer.continue == true) {
                     startMrgApp();
                 } else {
-                    console.log("\nEnding session with Bamazon Manager's App!".bold);
+                    console.log("\nEnding Session With Bamazon Manager's App!".bold);
                     console.log ("\nGOOD BYE!".bold);
                     connection.end();
                 }
@@ -116,6 +116,7 @@ var startMrgApp = function() {
     //Function to add inventory to database
     function addToInventory() {
         connection.query('SELECT * FROM Products', function(err, res) {
+        if (err) throw err;
         // New Table instance to format returned sql data
             var table = new Table({
                 head: ['ITEM ID', 'PRODUCT NAME', 'DEPT', 'PRICE', 'QTY'],
