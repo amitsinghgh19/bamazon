@@ -113,10 +113,12 @@ var startMrgApp = function() {
         startMrgApp();
         });
     }
+    var resLength;
     //Function to add inventory to database
     function addToInventory() {
         connection.query('SELECT * FROM Products', function(err, res) {
         if (err) throw err;
+        resLength=res.length;
         // New Table instance to format returned sql data
             var table = new Table({
                 head: ['ITEM ID', 'PRODUCT NAME', 'DEPT', 'PRICE', 'QTY'],
@@ -132,7 +134,14 @@ var startMrgApp = function() {
             inquirer.prompt([{
                 name:'item_id',
                 type:'input',
-                message: '\nEnter the ID of the Product you want to increase the inventory of'
+                message: '\nEnter the ID of the Product you want to increase the inventory of',
+                validate: function(value){
+                    if (value!=="" && isNaN(value) == false &&  value<=resLength ) {
+                        return true;
+                    } else {
+                        return chalk.bgRed("**ERROR** Invalid ID, enter a valid ID from the list");
+                    }
+                }
             }, {
                 name: 'qty',
                 type:'input',
@@ -162,6 +171,7 @@ var startMrgApp = function() {
                 
         });
     }
+    
     //Add a new product to the database
     function addNewProduct() {
         inquirer.prompt([{

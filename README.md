@@ -53,7 +53,7 @@
     ![Results](/screenshots/thankyou.PNG)
 
 - - -
-## HOW TO USE BAMAZON MANAGER's APP
+## HOW TO USE BAMAZON MANAGER APP
 -----------------------
 
 #. `bamazonManager.js`

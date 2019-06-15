@@ -5,8 +5,6 @@ var Table = require('cli-table'); //For Table formatting
 var chalk = require('chalk'); //For font color and properties
 var figlet = require('figlet');
 
-
-
 //Create the connection for the sql database
 var connection = mysql.createConnection({
     host: "localhost",
@@ -20,8 +18,20 @@ var connection = mysql.createConnection({
   connection.connect(function(err) {
       if (err) throw err;
       console.log("connected as id " + connection.threadId);
+    //   afterConnection();
       welcome();
   });
+  
+  
+//   function afterConnection() {
+//     connection.query("SELECT * FROM products", function(err, res) {
+//       if (err) throw err;
+//       var resLength=res.length;
+//       console.log(resLength);
+//       return resLength;
+//     });
+//   }
+  
 
 //Function that presents welcome statement the first time 
 function welcome(message){
@@ -67,16 +77,24 @@ function showProducts(){
         buyProducts();
     })
 }
-
+var resLength;
 //Function to ask user what product and quantity they want to purchase
 function buyProducts(){
+
+    connection.query("SELECT * FROM products", function(err, res) {
+        if (err) throw err;
+        resLength=res.length;
+        //console.log(resLength);
+        return resLength;
+      });
+
     inquirer.prompt([
         {
             name:"chosenItem",
             type: "input",
             message: chalk.green("Please enter the Item ID of the product you would like to purchase?"), 
             validate: function(value){
-                if (value!=="" && isNaN(value) == false &&  value<13 ) {
+                if (value!=="" && isNaN(value) == false &&  value<=resLength ) {
                     return true;
                 } else {
                     return chalk.bgRed("**ERROR** Invalid ID, enter a valid ID from the list");
