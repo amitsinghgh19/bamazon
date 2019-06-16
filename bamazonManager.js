@@ -49,11 +49,30 @@ var startMrgApp = function() {
                     addNewProduct();
                     break;
                 case "End Session": 
-                continueYN();
+                    //continueYN();
+                    endSession();
+                    break;
             } // end of switch
 
         }); // end of inquirer prompt function
 }  
+    //Function to prompt user if they want to continue or end connection
+    function endSession() {
+        inquirer.prompt({
+                    name: "continue",
+                    type: "confirm",
+                    message: "End Session? Are You Sure?".bold,
+                }).then(function(answer) {
+                    if (answer.continue == true) {
+                        console.log("\nEnding Session With Bamazon Manager's App!".bold);
+                        console.log ("\nGOOD BYE!".bold);
+                        connection.end();
+                    } else {
+                        startMrgApp();
+                    }
+                }); 
+    };
+
     //Function to prompt user if they want to continue or end connection
     function continueYN() {
     inquirer.prompt({
@@ -122,19 +141,21 @@ var startMrgApp = function() {
         // New Table instance to format returned sql data
             var table = new Table({
                 head: ['ITEM ID', 'PRODUCT NAME', 'DEPT', 'PRICE', 'QTY'],
-                colWidths: [10, 40, 20, 15, 10]
+                colWidths: [10, 40, 40, 15, 10]
             });
         for (var i=0; i < res.length; i++) {
         var productArray = [res[i].item_id, res[i].product_name, res[i].department_name, "$" +res[i].price, res[i].stock_quantity];
         table.push(productArray);    
         }
-        console.log(table.toString());
         console.log('\n');
+        console.log(table.toString());
+       
         });
             inquirer.prompt([{
                 name:'item_id',
                 type:'input',
                 message: '\nEnter the ID of the Product you want to increase the inventory of',
+
                 validate: function(value){
                     if (value!=="" && isNaN(value) == false &&  value<=resLength ) {
                         return true;
