@@ -198,24 +198,60 @@ var startMrgApp = function() {
         inquirer.prompt([{
             name: "product",
             type: "input",
-            message: "Type the name of the Product you want to add to Bamazon"
+            message: "Type the name of the Product you want to add to Bamazon",
+
+            validate: function(value){
+                if (value!=='' && isNaN(value)) {
+                    return true;
+                } else {
+                    return chalk.bgRed("**ERROR** Invalid Product Name, enter a valid Product Name.");
+                }
+            }
+
         }, {
             name: "department",
             type: "input",
-            message: "Type the Department name of the Product you want to add to Bamazon"
+            message: "Type the Department name of the Product you want to add to Bamazon",
+
+            validate: function(value){
+                if (value!=='' && isNaN(value)) {
+                    return true;
+                } else {
+                    return chalk.bgRed("**ERROR** Invalid Department Name, enter a valid Department Name.");
+                }
+            }
         }, {
             name: "price",
             type: "input",
-            message: "Enter the price of the product without currency symbols"
+            message: "Enter the price of the product without currency symbols",
+
+            validate: function(value){
+                if (value!=='' && !isNaN(value)) {
+                    return true;
+                } else {
+                    return chalk.bgRed("**ERROR** Invalid Price, enter a valid Price.");
+                }
+            }
         }, {
             name: "quantity",
             type: "input",
-            message: "Enter the amount you want to add to the inventory"
+            message: "Enter the amount you want to add to the inventory",
+            //
+            validate: function(value){
+                if (value!=='' && !isNaN(value)) {
+                    return true;
+                } 
+                else {
+                    return chalk.bgRed("**ERROR** Invalid Quantity, enter a valid Quantity.");
+                }
+            }
+
         }]).then(function(answers) {
             var product_name = answers.product;
             var department_name = answers.department;
             var price = answers.price;
             var stock_quantity = answers.quantity;
+  
             connection.query('INSERT INTO Products (product_name, department_name, price, stock_quantity) VALUES (?, ?, ?, ?)', [product_name, department_name, price, stock_quantity], function(err, data) {
                 if (err) {
                     throw err;
@@ -223,6 +259,7 @@ var startMrgApp = function() {
                 console.log('\n\nProduct: ' + product_name + ' added successfully!\n\n'.bold);
                 continueYN();
                 }
-            });
+            });    
+           
         });
     }   
