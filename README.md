@@ -66,7 +66,7 @@ The Bamazon Customer Portal allows users to view and edit the inventory of the s
 - - -
 
 ## HOW TO USE BAMAZON MANAGER APP
------------------------
+
 ### **Step by Step instructions**
 
 1. Open your terminal such as Bash.
