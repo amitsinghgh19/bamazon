@@ -97,35 +97,41 @@ The Bamazon Customer Portal allows users to view and edit the inventory of the s
     ![Results](/screenshots/mrg_view_low_inv.PNG)
 
 
-6a. If the manager selects `Add to Inventory`, it allows the manager to select a product and add inventory.
+6. If the manager selects `Add to Inventory`, it allows the manager to select a product and add inventory.
     
     **Screen-shot**: Add to Inventory
-    
+
     ![Results](/screenshots/mrg_add_inv.PNG)
+    
     ![Results](/screenshots/mrg_add_inv1.PNG)
 
-6b. The system `validates` if a user enters the correct Item ID.
+7. The system `validates` if a user enters the correct Item ID.
 
     **Screen-shot**: Validation
     ![Results](/screenshots/validation4.PNG)
+    
     ![Results](/screenshots/validation5.PNG)
 
-7a. If the manager selects `Add New Product`, it allows the manager to add a new product to the store.
+8. If the manager selects `Add New Product`, it allows the manager to add a new product to the store.
     
      **Screen-shot**: Add New Product
     
     ![Results](/screenshots/mrg_add_new_prod.PNG)
 
-7b. The system `validates` if a user enters valid product name(does not take null and number value), department name(does not take null and number value), price(does not take null & string value) & stock quantity(does not take null & string value).
+9. The system `validates` if a user enters valid product name(does not take null and number value), department name(does not take null and number value), price(does not take null & string value) & stock quantity(does not take null & string value).
     
     **Screen-shot**: Validation
+    
     ![Results](/screenshots/validation6.PNG)
+    
     ![Results](/screenshots/validation7.PNG)
+    
     ![Results](/screenshots/validation8.PNG)
+    
     ![Results](/screenshots/validation9.PNG)
 
 
-8. If the manager selects `End Session`, it ends the session and doesn't go back to the menu.
+10. If the manager selects `End Session`, it ends the session and doesn't go back to the menu.
     
     **Screen-shot**: End Session
     
