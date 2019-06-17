@@ -7,7 +7,7 @@
 - - -
 
 ## ABOUT THE APP
-An interactive shopping node app where MySQL and Node.JS are used to allow users to purchase items as a customer, view, track and update the product inventory as a manager, and track the total sales by department as an supervisor.
+An interactive shopping node app where MySQL and Node.JS are used to allow users to purchase items as a customer & view, track and update the product inventory as a manager.
 - - -
 
 ## BAMAZON CUSTOMER APP
@@ -63,6 +63,7 @@ The Bamazon Customer Portal allows users to view and edit the inventory of the s
 * View low inventory
 * Add to inventory
 * Add a new product
+* End Session
 - - -
 
 ## HOW TO USE BAMAZON MANAGER APP
